@@ -54,12 +54,14 @@ if (Test-Path $link) { (Get-Item $link).Delete() }
 New-Item -ItemType Junction -Path $link -Target (Join-Path $toolkit 'skill\roblox-vfx') | Out-Null
 Write-Host "== skill roblox-vfx -> $link"
 
-if (-not $NoMcp -and (Get-Command claude -ErrorAction SilentlyContinue)) {
+# Call claude.cmd, not claude.ps1: PowerShell strips the "--" separator when calling a .ps1.
+$claude = (Get-Command claude.cmd, claude.exe -ErrorAction SilentlyContinue | Select-Object -First 1).Source
+if (-not $NoMcp -and $claude) {
     Write-Host '== MCP servers (Claude Code, user scope)'
-    foreach ($name in 'yuji-vfx', 'photocraft') { try { claude mcp remove -s user $name 2>$null | Out-Null } catch {} }
-    claude mcp add -s user -e "YUJI_VFX_WORKSPACE=$workspace" yuji-vfx -- node (Join-Path $toolkit 'src\mcp.mjs')
+    foreach ($name in 'yuji-vfx', 'photocraft') { try { & $claude mcp remove -s user $name 2>$null | Out-Null } catch {} }
+    & $claude mcp add yuji-vfx -s user -e "YUJI_VFX_WORKSPACE=$workspace" '--' node (Join-Path $toolkit 'src\mcp.mjs')
     if (Test-Path "$bin\photocraft-cli.exe") {
-        claude mcp add -s user photocraft -- "$bin\photocraft-cli.exe" mcp --automation-read-root $workspace --automation-write-root $workspace
+        & $claude mcp add photocraft -s user '--' "$bin\photocraft-cli.exe" mcp --automation-read-root $workspace --automation-write-root $workspace
     }
 } elseif (-not $NoMcp) {
     Write-Host '!! claude CLI not on PATH: register the MCP servers by hand (see roblox\README.md)'

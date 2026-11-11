@@ -39,7 +39,8 @@ This compiles the app and CLI, copies them to `%LOCALAPPDATA%\Programs\YujiPhoto
 | `yuji-vfx` | the Roblox VFX pipeline below |
 | `photocraft` | the editor engine: layers, `shape.create` from point lists, 500+ commands, previews |
 
-Other MCP clients (Codex, Cursor, Claude Desktop):
+Other MCP clients (Codex, Cursor, Claude Desktop). Use forward slashes in paths, and for photocraft
+create documents with `"background": "transparent"` when drawing VFX:
 
 ```json
 { "mcpServers": {
