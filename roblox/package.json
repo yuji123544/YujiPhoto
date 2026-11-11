@@ -1,0 +1,23 @@
+{
+  "name": "yuji-vfx",
+  "version": "0.1.0",
+  "description": "YujiPhoto's Roblox VFX toolkit: build tintable white-layer flipbooks, check them, preview them, upload them and generate Luau. Usable as a CLI and as an MCP server.",
+  "type": "module",
+  "private": true,
+  "license": "MIT OR Apache-2.0",
+  "bin": {
+    "yuji-vfx": "src/cli.mjs"
+  },
+  "scripts": {
+    "mcp": "node src/mcp.mjs",
+    "test": "node --test \"test/**/*.test.mjs\""
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.2",
+    "sharp": "0.35.5",
+    "zod": "4.6.7"
+  }
+}
