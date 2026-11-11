@@ -1,3 +1,5 @@
+<p align="center"><img src="../roblox/docs/icon-256.png" width="128" height="128" alt="YujiPhoto icon: a glowing slash with a spark on a night-violet tile"></p>
+
 <h1 align="center">YujiPhoto</h1>
 
 <p align="center">
@@ -51,4 +53,7 @@ Merges the latest PhotoCraft, rebuilds, reinstalls and pushes to this fork. Robl
 YujiPhoto is a fork of [PhotoCraft](https://github.com/storytold/photocraft) by Storyteller and its
 contributors, dual-licensed MIT OR Apache-2.0 like the original (see `LICENSE-MIT`, `LICENSE-APACHE`,
 `NOTICE`, `ATTRIBUTION.md`). The engine's own README is [`README.md`](../README.md). Changes made in
-this fork: the `roblox/` folder and this page. YujiPhoto is not affiliated with Storyteller or Roblox.
+this fork: the `roblox/` folder, this page, the app icon (`assets/app-icon/`, drawn by
+`roblox/scripts/make-icon.mjs`) and the visible app name (`crates/ui-egui/src/yuji_brand.rs`, used by
+the window title, start screen, menus and About; crate names, binaries and the settings folder stay
+`photocraft` so updates merge cleanly). YujiPhoto is not affiliated with Storyteller or Roblox.

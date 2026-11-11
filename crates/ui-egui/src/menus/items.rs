@@ -136,6 +136,10 @@ pub fn menu_items(app: &PhotocraftApp) -> Vec<MenuItem> {
     if let Some(item) = items.iter_mut().find(|i| i.id == "layer.smartObjects.revealInFinder") {
         item.label = reveal_label().into();
     }
+    // YujiPhoto: Help › About names the fork (crate::brand).
+    if let Some(item) = items.iter_mut().find(|i| i.id == "help.about") {
+        item.label = format!("About {}", crate::yuji_brand::NAME);
+    }
     // File › Open Recent: a dynamic submenu of recently opened files (inserted after "Open As…").
     if let Some(after) = items.iter().position(|i| i.id == "file.openAs") {
         let rp: Vec<String> = vec!["File".into(), "Open Recent".into()];
